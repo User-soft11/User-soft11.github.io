@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Quinceañera -  Lourdes Fabiana López Vasquez</title>
+<title>Invitación Quinceañera - Lourdes Fabiana López Vasquez</title>
 
 <style>
     body {
@@ -69,8 +69,8 @@
 
     .btn {
         display: block;
-        width: 230px;
-        margin: 30px auto;
+        width: 250px;
+        margin: 20px auto;
         padding: 12px 20px;
         background: #8c32cf;
         color: white;
@@ -92,6 +92,12 @@
         margin-top: 20px;
         color: #4b1e63;
     }
+
+    /* reproductor de música */
+    .music-container {
+        text-align: center;
+        margin-top: 25px;
+    }
 </style>
 </head>
 
@@ -99,46 +105,53 @@
 
 <div class="inv-container">
 
-    <!-- IMAGEN PRINCIPAL -->
-    <div class="img-hero" style="background-image: url('1.jpeg');">
-        <!-- Reemplazar ruta/imagen-principal.jpg -->
+    <!-- MÚSICA (puedes cambiar la canción aquí) -->
+    <div class="music-container">
+        <h3> Haga click para empezar</h3>
+        <audio controls autoplay loop>
+            <source src="23.mp3" type="audio/mp3">
+        </audio>
     </div>
 
-    <h1>✨ Mis 15 Años ✨</h1>
-    <h2> Lourdes Fabiana López Vasquez</h2>
+    <!-- IMAGEN PRINCIPAL -->
+    <div class="img-hero" style="background-image: url('1.jpeg');"></div>
 
-    <p class="quote">“Dios está en medio de ella, no será movida.” — Salmos 46:5</p>
+    <h1>✨ Mis 15 Años ✨</h1>
+    <h2>Lourdes Fabiana López Vasquez</h2>
+
+    <p class="quote">“Dios está en medio de ella, no será conmovida.” — Salmos 46:5</p>
 
     <div class="section">
         <h3>Con mucho amor...</h3>
         <p>
-            Hoy agradezcemos a Dios por permitirle llegar a este momento tan especial a nuestra princesa.  
-            Ha sido Él quien ha guiado sus pasos, ha sostenido su corazón y ha 
-            iluminado sus días con su gracia.  
-            deseamos compartir contigo la alegría de esta nueva etapa llena de sueños, 
-            ilusiones y bendiciones para nuestra hermosa hija
-    </p>
+            Hoy agradecemos a Dios por permitirle llegar a este momento tan especial a nuestra princesa.  
+            Ha sido Él quien ha guiado sus pasos, ha sostenido su corazón y ha iluminado sus días con su gracia.  
+            Deseamos compartir contigo la alegría de esta nueva etapa llena de sueños, ilusiones y bendiciones.
+        </p>
         <p class="quote">“El Señor te bendiga y te guarde.” — Números 6:24</p>
     </div>
 
     <div class="section">
         <h3>📍 Lugar del Evento</h3>
-        <p style="text-align:center; font-size:1.2em;">
-            <strong>Hotel Carso Inn</strong>
-        </p>
-        <p class="quote"> Dia:6 de Diciembre del 2025
-            Hora: 18:00pm</p>
+        <p style="text-align:center; font-size:1.2em;"><strong>Hotel Carso Inn</strong></p>
+        <p class="quote">
+            Dia: 6 de Diciembre del 2025. Hora: 18:00pm</p>
+
+        <!-- BOTÓN GOOGLE MAPS -->
+        <a class="btn" href="https://maps.app.goo.gl/7JuUKjE87GjPCjDy5" target="_blank">
+            📌 Ver Ubicación en Google Maps
+        </a>
     </div>
 
     <div class="section">
         <h3>🎀 Acompáñame en mi día especial</h3>
-        <p style="text-align:center;">Confirmar invitación via Whatsapp</p>
+        <p style="text-align:center;">Confirmar invitación vía Whatsapp</p>
+        <a class="btn" href="https://wa.me/593990604512?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%2015%20años%20de%20Lourdes%20Fabiana." target="_blank">
+💬 Confirmar por WhatsApp</a>
+
     </div>
 
-    <!-- IMAGEN FINAL -->
-    <div class="img-footer" style="background-image: url('3.jpeg');">
-        <!-- Reemplazar ruta/imagen-final.jpg -->
-    </div>
+    <div class="img-footer" style="background-image: url('3.jpeg');"></div>
 
     <footer>
         Con cariño,  
@@ -148,5 +161,6 @@
 </div>
 
 </body>
-
 </html>
+
+
