@@ -35,6 +35,37 @@
         margin-bottom: 10px;
     }
 
+    /* EFECTO BRILLANTE PARA BOTONES */
+    .btn {
+        display: block;
+        width: 260px;
+        margin: 20px auto;
+        padding: 12px 20px;
+        background: linear-gradient(90deg, #8c32cf, #b35cff, #8c32cf);
+        background-size: 300% 300%;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 25px;
+        font-weight: bold;
+        animation: shine 4s ease infinite;
+        cursor: pointer;
+        box-shadow: 0 0 10px #cfa2ff;
+        transition: transform 0.3s;
+    }
+
+    .btn:hover {
+        transform: scale(1.06);
+        box-shadow: 0 0 18px #e3c4ff;
+    }
+
+    @keyframes shine {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+
+    /* IMÁGENES */
     .img-hero, .img-footer {
         width: 100%;
         height: 300px;
@@ -45,6 +76,7 @@
         margin-bottom: 20px;
     }
 
+    /* SECCIONES */
     .section {
         padding: 15px;
         margin-top: 20px;
@@ -67,23 +99,18 @@
         color: #6d2ca8;
     }
 
-    .btn {
-        display: block;
-        width: 250px;
-        margin: 20px auto;
-        padding: 12px 20px;
-        background: #8c32cf;
-        color: white;
-        text-decoration: none;
-        text-align: center;
-        border-radius: 25px;
-        font-weight: bold;
-        transition: 0.3s;
+    /* CONTADOR ANIMADO */
+    #countdown {
+        text-align:center;
+        font-size:1.8em;
+        font-weight:bold;
+        color:#5b0e86;
+        animation: pulse 1.8s infinite alternate ease-in-out;
     }
 
-    .btn:hover {
-        background: #a355e8;
-        transform: scale(1.05);
+    @keyframes pulse {
+        0% {transform: scale(1); opacity: 0.9;}
+        100% {transform: scale(1.08); opacity: 1;}
     }
 
     footer {
@@ -92,12 +119,6 @@
         margin-top: 20px;
         color: #4b1e63;
     }
-
-    /* reproductor de música */
-    .music-container {
-        text-align: center;
-        margin-top: 25px;
-    }
 </style>
 </head>
 
@@ -105,19 +126,23 @@
 
 <div class="inv-container">
 
-    <!-- MÚSICA (puedes cambiar la canción aquí) -->
-    <div class="music-container">
-        <h3> Haga click para empezar</h3>
-        <audio controls autoplay loop>
-            <source src="23.mp3" type="audio/mp3">
-        </audio>
-    </div>
+   <div class="music-container" style="text-align:center; margin-bottom:20px;">
+    <h3>🎵 Música especial</h3>
+    <audio controls autoplay loop style="width:90%; max-width:400px;">
+        <source src="23.mp3" type="audio/mp3">
+    </audio>
+</div>
+
 
     <!-- IMAGEN PRINCIPAL -->
     <div class="img-hero" style="background-image: url('1.jpeg');"></div>
 
     <h1>✨ Mis 15 Años ✨</h1>
     <h2>Lourdes Fabiana López Vasquez</h2>
+
+    <!-- CONTADOR REGRESIVO -->
+    <h3>⏳ Faltan:</h3>
+    <p id="countdown"></p>
 
     <p class="quote">“Dios está en medio de ella, no será conmovida.” — Salmos 46:5</p>
 
@@ -134,23 +159,25 @@
     <div class="section">
         <h3>📍 Lugar del Evento</h3>
         <p style="text-align:center; font-size:1.2em;"><strong>Hotel Carso Inn</strong></p>
-        <p class="quote">
-            Dia: 6 de Diciembre del 2025. Hora: 18:00pm</p>
+        <p class="quote"> Dia: 6 de Diciembre del 2025. Hora: 18:00pm</p>
 
         <!-- BOTÓN GOOGLE MAPS -->
-        <a class="btn" href="https://maps.app.goo.gl/7JuUKjE87GjPCjDy5" target="_blank">
+        <a class="btn" href="https://maps.app.goo.gl/QUnwN1Uk6WmiqvFY9" target="_blank">
             📌 Ver Ubicación en Google Maps
         </a>
     </div>
 
     <div class="section">
         <h3>🎀 Acompáñame en mi día especial</h3>
-        <p style="text-align:center;">Confirmar invitación vía Whatsapp</p>
-        <a class="btn" href="https://wa.me/593990604512?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%2015%20años%20de%20Lourdes%20Fabiana." target="_blank">
-💬 Confirmar por WhatsApp</a>
+        <p style="text-align:center;">Confirmar invitación vía WhatsApp</p>
 
+        <!-- BOTÓN WHATSAPP -->
+        <a class="btn" href="https://wa.me/593990604512?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%2015%20años%20de%20Lourdes%20Fabiana." target="_blank">
+            💬 Confirmar por WhatsApp
+        </a>
     </div>
 
+    <!-- IMAGEN FINAL -->
     <div class="img-footer" style="background-image: url('3.jpeg');"></div>
 
     <footer>
@@ -160,7 +187,31 @@
 
 </div>
 
+<!-- SCRIPT DEL RELOJ REGRESIVO -->
+<script>
+    const targetDate = new Date("December 6, 2025 18:00:00").getTime();
+
+    setInterval(function() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            document.getElementById("countdown").innerHTML = "🎉 ¡Hoy es el gran día! 🎉";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+            days + " días • " + hours + " horas • " + minutes + " min • " + seconds + " seg";
+    }, 1000);
+</script>
+
 </body>
 </html>
+
 
 
