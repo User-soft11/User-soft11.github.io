@@ -2,217 +2,178 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Quinceañera - Lourdes Fabiana López Vasquez</title>
+<title>Regalo Multicapas</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: "Georgia", serif;
-        background: #f7e9ff;
-        color: #4b1e63;
-    }
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(circle,#3a0000,#0a0000);
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+}
 
-    .inv-container {
-        max-width: 900px;
-        margin: auto;
-        background: white;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.2);
-        border: 3px solid #c28bff;
-        animation: fadeIn 2s ease-in-out;
-    }
+/* TEXTO */
+.texto{
+    position:absolute;
+    top:8%;
+    color:gold;
+    font-size:28px;
+    letter-spacing:2px;
+    text-shadow:0 0 10px gold;
+    animation:latido 1.5s infinite;
+}
 
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
+@keyframes latido{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+}
 
-    h1, h2, h3 {
-        text-align: center;
-        color: #5b0e86;
-        margin-bottom: 10px;
-    }
+/* CONTENEDOR */
+.gift{
+    position:relative;
+    width:260px;
+    height:260px;
+    cursor:pointer;
+}
 
-    /* EFECTO BRILLANTE PARA BOTONES */
-    .btn {
-        display: block;
-        width: 260px;
-        margin: 20px auto;
-        padding: 12px 20px;
-        background: linear-gradient(90deg, #8c32cf, #b35cff, #8c32cf);
-        background-size: 300% 300%;
-        color: white;
-        text-decoration: none;
-        text-align: center;
-        border-radius: 25px;
-        font-weight: bold;
-        animation: shine 4s ease infinite;
-        cursor: pointer;
-        box-shadow: 0 0 10px #cfa2ff;
-        transition: transform 0.3s;
-    }
+/* CAPAS */
+.layer{
+    position:absolute;
+    inset:0;
+    border-radius:14px;
+    transition:transform 0.8s ease, opacity 0.8s ease;
+    box-shadow:0 0 25px rgba(255,215,0,0.8);
+}
 
-    .btn:hover {
-        transform: scale(1.06);
-        box-shadow: 0 0 18px #e3c4ff;
-    }
+/* 15 COLORES */
+.layer:nth-child(1){background:#8b0000;}
+.layer:nth-child(2){background:#b30000;}
+.layer:nth-child(3){background:#cc0000;}
+.layer:nth-child(4){background:#e60000;}
+.layer:nth-child(5){background:#ff1a1a;}
+.layer:nth-child(6){background:#ff3333;}
+.layer:nth-child(7){background:#ff4d4d;}
+.layer:nth-child(8){background:#ff6666;}
+.layer:nth-child(9){background:#d4af37;}
+.layer:nth-child(10){background:#ffd700;}
+.layer:nth-child(11){background:#ffdd55;}
+.layer:nth-child(12){background:#ffe680;}
+.layer:nth-child(13){background:#fff0b3;}
+.layer:nth-child(14){background:#fff8dc;}
+.layer:nth-child(15){background:linear-gradient(135deg,#ffd700,#ff0000);}
 
-    @keyframes shine {
-        0% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 0% 50%;}
-    }
+/* ABRIR CAPAS */
+.layer.open{
+    transform:translateY(-140px) rotate(12deg) scale(0.6);
+    opacity:0;
+}
 
-    /* IMÁGENES */
-    .img-hero, .img-footer {
-        width: 100%;
-        height: 300px;
-        background-size: cover;
-        background-position: center;
-        border-radius: 15px;
-        border: 2px solid #cfa2ff;
-        margin-bottom: 20px;
-    }
+/* CONTENIDO FINAL */
+.final{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    transition:opacity 1s ease;
+}
 
-    /* SECCIONES */
-    .section {
-        padding: 15px;
-        margin-top: 20px;
-        background: #f3dfff;
-        border-radius: 10px;
-        border-left: 5px solid #a158d1;
-        animation: slide 2.3s;
-    }
+.final img{
+    max-width:85%;
+    border-radius:15px;
+    box-shadow:0 0 30px gold;
+}
 
-    @keyframes slide {
-        from {transform: translateX(-40px); opacity: 0;}
-        to {transform: translateX(0); opacity: 1;}
-    }
+/* BRILLOS */
+.sparkle{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:gold;
+    border-radius:50%;
+    box-shadow:0 0 12px gold;
+    animation:sparkle 2s infinite;
+}
 
-    .quote {
-        text-align: center;
-        font-style: italic;
-        font-size: 1.2em;
-        margin: 15px 0;
-        color: #6d2ca8;
-    }
+@keyframes sparkle{
+    0%{transform:scale(0);opacity:0;}
+    50%{transform:scale(1.5);opacity:1;}
+    100%{transform:scale(0);opacity:0;}
+}
 
-    /* CONTADOR ANIMADO */
-    #countdown {
-        text-align:center;
-        font-size:1.8em;
-        font-weight:bold;
-        color:#5b0e86;
-        animation: pulse 1.8s infinite alternate ease-in-out;
-    }
-
-    @keyframes pulse {
-        0% {transform: scale(1); opacity: 0.9;}
-        100% {transform: scale(1.08); opacity: 1;}
-    }
-
-    footer {
-        text-align: center;
-        padding: 20px;
-        margin-top: 20px;
-        color: #4b1e63;
-    }
+/* CREDITOS */
+.creditos{
+    position:fixed;
+    bottom:10px;
+    right:15px;
+    font-size:12px;
+    color:gold;
+    opacity:0.75;
+    text-shadow:0 0 6px gold;
+    font-family:monospace;
+    pointer-events:none;
+}
 </style>
 </head>
 
 <body>
 
-<div class="inv-container">
+<div class="texto">✨ Pulsa en el regalo ✨</div>
 
-   <div class="music-container" style="text-align:center; margin-bottom:20px;">
-    <h3> Haga click para empezar</h3></h3>
-    <audio controls autoplay loop style="width:90%; max-width:400px;">
-        <source src="23.mp3" type="audio/mp3">
-    </audio>
+<div class="gift" onclick="abrir()">
+
+    <!-- 15 CAPAS -->
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+
+    <!-- CONTENIDO FINAL -->
+    <div class="final">
+        <!-- CAMBIA LA IMAGEN AQUÍ -->
+        <img src="gat.jpg">
+    </div>
+
+    <!-- BRILLOS -->
+    <div class="sparkle" style="top:-20px;left:40px"></div>
+    <div class="sparkle" style="top:20px;right:50px"></div>
+    <div class="sparkle" style="bottom:-10px;left:90px"></div>
+    <div class="sparkle" style="bottom:30px;right:80px"></div>
 </div>
 
+<!-- CREDITOS -->
+<div class="creditos">by: pelado serio (aisak)</div>
 
-    <!-- IMAGEN PRINCIPAL -->
-    <div class="img-hero" style="background-image: url('1.jpeg');"></div>
-
-    <h1>✨ Mis 15 Años ✨</h1>
-    <h2>Lourdes Fabiana López Vasquez</h2>
-
-    <!-- CONTADOR REGRESIVO -->
-    <h3>⏳ Faltan:</h3>
-    <p id="countdown"></p>
-
-    <p class="quote">“Dios está en medio de ella, no será conmovida.” — Salmos 46:5</p>
-
-    <div class="section">
-        <h3>Con mucho amor...</h3>
-        <p>
-            Hoy agradecemos a Dios por permitirle llegar a este momento tan especial a nuestra princesa.  
-            Ha sido Él quien ha guiado sus pasos, ha sostenido su corazón y ha iluminado sus días con su gracia.  
-            Deseamos compartir contigo la alegría de esta nueva etapa llena de sueños, ilusiones y bendiciones.
-        </p>
-        <p class="quote">“El Señor te bendiga y te guarde.” — Números 6:24</p>
-    </div>
-
-    <div class="section">
-        <h3>📍 Lugar del Evento</h3>
-        <p style="text-align:center; font-size:1.2em;"><strong>Hotel Carso Inn</strong></p>
-        <p class="quote"> Dia: 6 de Diciembre del 2025. Hora: 18:00pm</p>
-
-        <!-- BOTÓN GOOGLE MAPS -->
-        <a class="btn" href="https://maps.app.goo.gl/QUnwN1Uk6WmiqvFY9" target="_blank">
-            📌 Ver Ubicación en Google Maps
-        </a>
-    </div>
-
-    <div class="section">
-        <h3>🎀 Acompáñame en mi día especial</h3>
-        <p style="text-align:center;">Confirmar invitación vía WhatsApp</p>
-
-        <!-- BOTÓN WHATSAPP -->
-        <a class="btn" href="https://wa.me/593990604512?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%2015%20años%20de%20Lourdes%20Fabiana." target="_blank">
-            💬 Confirmar por WhatsApp
-        </a>
-    </div>
-
-    <!-- IMAGEN FINAL -->
-    <div class="img-footer" style="background-image: url('3.jpeg');"></div>
-
-    <footer>
-        Con cariño,  
-        <br><strong>Sr: Fabián Ramiro Lopez Martinez & Sra Patricia Narcisa Vasquez Benitez</strong>
-    </footer>
-
-</div>
-
-<!-- SCRIPT DEL RELOJ REGRESIVO -->
 <script>
-    const targetDate = new Date("December 6, 2025 18:00:00").getTime();
+let indice = 0;
+const capas = document.querySelectorAll('.layer');
+const final = document.querySelector('.final');
 
-    setInterval(function() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance < 0) {
-            document.getElementById("countdown").innerHTML = "🎉 ¡Hoy es el gran día! 🎉";
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("countdown").innerHTML =
-            days + " días • " + hours + " horas • " + minutes + " min • " + seconds + " seg";
-    }, 1000);
+function abrir(){
+    if(indice < capas.length){
+        capas[indice].classList.add('open');
+        indice++;
+    }else{
+        final.style.opacity = 1;
+    }
+}
 </script>
 
 </body>
 </html>
-
-
-
-
